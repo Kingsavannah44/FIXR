@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/ui/Navbar';
 import Footer from './components/ui/Footer';
+import ScrollToTop from './components/ui/ScrollToTop';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -28,6 +29,7 @@ export default function App() {
   return (
     <AuthProvider>
       <div className="min-h-screen bg-dark">
+        <ScrollToTop />
         <Navbar />
         <div className="h-16" />
         <Routes>

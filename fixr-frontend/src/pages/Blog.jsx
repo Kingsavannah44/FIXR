@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+/* ── Pexels — African professionals & scenes ────────────────────── */
+const PX = (id, w = 800, h = 500) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}&h=${h}&fit=crop`;
+
 const POSTS = [
   {
     id: 1,
     tag: 'Platform News',
-    tagColor: 'bg-primary/20 text-primary',
+    tagColor: 'bg-primary/20 text-green-300',
     title: 'FIXR hits 50,000 registered users across East Africa',
-    excerpt: 'Less than 18 months after launch, FIXR has become East Africa\'s fastest-growing work platform — driven by gig workers, farmers, and diaspora professionals.',
-    img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=500&fit=crop&auto=format&q=80',
+    excerpt: 'Less than 18 months after launch, FIXR has become East Africa\'s fastest-growing work platform, driven by gig workers, farmers, and diaspora professionals.',
+    img: PX(1181406, 800, 500),   // African professional — platform milestone
     author: 'Amara Osei',
-    authorImg: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=80&h=80&fit=crop&auto=format&q=80',
+    authorImg: PX(1239291, 80, 80),
     date: 'May 28, 2025',
     readTime: '3 min read',
     featured: true,
@@ -20,10 +24,10 @@ const POSTS = [
     tag: 'Tips & Guides',
     tagColor: 'bg-accent/20 text-accent',
     title: 'How to land your first gig on FIXR in under 48 hours',
-    excerpt: 'A step-by-step guide to optimising your profile, writing a killer cover note, and standing out from the crowd — even with no reviews yet.',
-    img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop&auto=format&q=80',
+    excerpt: 'A step-by-step guide to optimising your profile, writing a killer cover note, and standing out from the crowd even with no reviews yet.',
+    img: PX(1181671, 600, 400),   // person on phone/laptop — gig tips
     author: 'David Kimani',
-    authorImg: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&auto=format&q=80',
+    authorImg: PX(1181406, 80, 80),
     date: 'May 14, 2025',
     readTime: '5 min read',
     featured: false,
@@ -33,10 +37,10 @@ const POSTS = [
     tag: 'AI & Tech',
     tagColor: 'bg-purple-500/20 text-purple-300',
     title: 'Behind the scenes: How our AI CV Builder works',
-    excerpt: 'We built an AI tool that writes professional CVs from your FIXR profile. Here\'s the technical story — and why we made it completely free.',
-    img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&h=400&fit=crop&auto=format&q=80',
+    excerpt: 'We built an AI tool that writes professional CVs from your FIXR profile. Here\'s the technical story and why we made it completely free.',
+    img: PX(3760067, 600, 400),
     author: 'Fatima Al-Hassan',
-    authorImg: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&auto=format&q=80',
+    authorImg: PX(733872, 80, 80),
     date: 'May 2, 2025',
     readTime: '7 min read',
     featured: false,
@@ -47,9 +51,9 @@ const POSTS = [
     tagColor: 'bg-green-500/20 text-green-300',
     title: 'FIXR for Farmers: Connecting cooperatives to buyers across Kenya',
     excerpt: 'We sat down with three farming cooperatives in the Rift Valley to learn how FIXR is changing how they sell produce and find labour.',
-    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop&auto=format&q=80',
+    img: PX(1181519, 600, 400),   // outdoor/nature scene — agribusiness ✓
     author: 'Brian Mwangi',
-    authorImg: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&auto=format&q=80',
+    authorImg: PX(1181244, 80, 80),
     date: 'Apr 20, 2025',
     readTime: '6 min read',
     featured: false,
@@ -58,11 +62,11 @@ const POSTS = [
     id: 5,
     tag: 'Payments',
     tagColor: 'bg-blue-500/20 text-blue-300',
-    title: 'M-Pesa integration deep-dive: Instant payouts for gig workers',
-    excerpt: 'How we integrated Safaricom Daraja to deliver instant M-Pesa payouts — and why this is a game-changer for informal workers without bank accounts.',
-    img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop&auto=format&q=80',
+    title: 'M-Pesa integration deep dive: Instant payouts for gig workers',
+    excerpt: 'How we integrated Safaricom Daraja to deliver instant M-Pesa payouts and why this is a game-changer for informal workers without bank accounts.',
+    img: PX(3760067, 600, 400),
     author: 'David Kimani',
-    authorImg: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&auto=format&q=80',
+    authorImg: PX(1181406, 80, 80),
     date: 'Apr 8, 2025',
     readTime: '4 min read',
     featured: false,
@@ -154,7 +158,7 @@ export default function Blog() {
         {/* Newsletter */}
         <div className="mt-16 relative rounded-2xl overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&h=400&fit=crop&auto=format&q=80"
+            src={PX(1181406, 1600, 400)}
             alt=""
             className="absolute inset-0 w-full h-full object-cover opacity-10"
           />

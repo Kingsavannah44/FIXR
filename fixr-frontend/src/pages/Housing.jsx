@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api/client';
 
+/* ── Pexels — African housing & property context ────────────────── */
+const PX = (id, w = 800, h = 600) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}&h=${h}&fit=crop`;
+
 const PROPERTY_TYPES = ['apartment', 'house', 'bedsitter', 'commercial'];
 const SERVICE_ICONS = {
   cleaning: '🧹', waste_management: '🗑️', maintenance: '🔧',
@@ -23,7 +27,7 @@ function VerifiedBadge() {
 function ListingCard({ listing }) {
   const photos = (() => { try { return JSON.parse(listing.photos || '[]'); } catch { return []; } })();
   const services = (() => { try { return JSON.parse(listing.bundled_services || '[]'); } catch { return []; } })();
-  const photo = photos[0] || 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&auto=format&q=80';
+  const photo = photos[0] || PX(186077, 800, 600);
 
   return (
     <Link to={`/housing/${listing.id}`} className="card !p-0 overflow-hidden group hover:border-primary/60 hover:scale-[1.01] transition-all duration-300 block">
@@ -123,7 +127,7 @@ export default function Housing() {
           {[
             { icon: '✅', label: 'Verified Owners', desc: 'Every landlord identity-checked before listing' },
             { icon: '🔐', label: 'Escrow Protection', desc: 'Funds held until both parties confirm move-in' },
-            { icon: '💬', label: 'Direct Messaging', desc: 'Talk to landlords directly — no middlemen' },
+            { icon: '💬', label: 'Direct Messaging', desc: 'Talk to landlords directly. No middlemen.' },
           ].map(t => (
             <div key={t.label} className="bg-gray-900/60 border border-gray-800 rounded-xl p-3 flex items-start gap-3">
               <span className="text-2xl">{t.icon}</span>
@@ -207,7 +211,7 @@ export default function Housing() {
       {/* CTA for landlords */}
       <div className="mt-16 relative rounded-2xl overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=400&fit=crop&auto=format&q=80"
+          src={PX(186077, 1200, 400)}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />

@@ -372,7 +372,7 @@ export default function ConstructionDetail() {
       {tab === 'submit' && canSubmitUpdate && (
         <form onSubmit={submitUpdate} className="space-y-4 max-w-xl">
           <div className="bg-yellow-900/20 border border-yellow-800/30 rounded-xl p-3 text-xs text-yellow-300">
-            ⚠️ Updates are immutable. Once submitted, they cannot be edited — this ensures an honest audit trail.
+            ⚠️ Updates are immutable. Once submitted, they cannot be edited. This ensures an honest audit trail.
           </div>
           <div>
             <label className="block text-sm font-semibold mb-1">Update Title</label>

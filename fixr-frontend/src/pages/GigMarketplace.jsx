@@ -2,29 +2,34 @@ import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import api from '../api/client';
 
+/* ── Pexels — African work context ──────────────────────────────── */
+const PX = (id, w = 80, h = 80) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}&h=${h}&fit=crop`;
+
 const CATEGORIES = [
-  { slug: 'all',          label: 'All Gigs',      img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=80&h=80&fit=crop&auto=format&q=70', color: 'from-gray-700' },
-  { slug: 'trades',       label: 'Trades',         img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=80&h=80&fit=crop&auto=format&q=70', color: 'from-orange-900' },
-  { slug: 'creative',     label: 'Creative',       img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=80&h=80&fit=crop&auto=format&q=70', color: 'from-purple-900' },
-  { slug: 'agribusiness', label: 'Agribusiness',   img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=80&h=80&fit=crop&auto=format&q=70', color: 'from-green-900' },
-  { slug: 'internship',   label: 'Internships',    img: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=80&h=80&fit=crop&auto=format&q=70', color: 'from-blue-900' },
-  { slug: 'remote',       label: 'Remote',         img: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=80&h=80&fit=crop&auto=format&q=70', color: 'from-cyan-900' },
+  { slug: 'all',          label: 'All Gigs',     img: PX(1181406),  color: 'from-gray-700'   },  // professional worker — generic
+  { slug: 'trades',       label: 'Trades',        img: PX(2219024),  color: 'from-orange-900' },  // tradesperson at work ✓
+  { slug: 'creative',     label: 'Creative',      img: PX(3184291),  color: 'from-purple-900' },  // creative/design scene ✓
+  { slug: 'agribusiness', label: 'Agribusiness',  img: PX(1181519),  color: 'from-green-900'  },  // outdoor worker/learning ✓
+  { slug: 'internship',   label: 'Internships',   img: PX(1181406),  color: 'from-blue-900'   },  // professional ✓
+  { slug: 'remote',       label: 'Remote',        img: PX(1181671),  color: 'from-cyan-900'   },  // person on phone/laptop ✓
 ];
 
 const CAT_META = {
-  trades:       { img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=80&h=80&fit=crop&auto=format&q=70', badge: 'bg-orange-500/15 text-orange-300 border-orange-500/25' },
-  creative:     { img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=80&h=80&fit=crop&auto=format&q=70', badge: 'bg-purple-500/15 text-purple-300 border-purple-500/25' },
-  agribusiness: { img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=80&h=80&fit=crop&auto=format&q=70', badge: 'bg-green-500/15 text-green-300 border-green-500/25' },
-  internship:   { img: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=80&h=80&fit=crop&auto=format&q=70', badge: 'bg-blue-500/15 text-blue-300 border-blue-500/25' },
-  remote:       { img: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=80&h=80&fit=crop&auto=format&q=70', badge: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/25' },
+  trades:       { img: PX(2219024), badge: 'bg-orange-500/15 text-orange-300 border-orange-500/25' },
+  creative:     { img: PX(3184291), badge: 'bg-purple-500/15 text-purple-300 border-purple-500/25' },
+  agribusiness: { img: PX(1181519), badge: 'bg-green-500/15 text-green-300 border-green-500/25'    },
+  internship:   { img: PX(1181406), badge: 'bg-blue-500/15 text-blue-300 border-blue-500/25'       },
+  remote:       { img: PX(1181671), badge: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/25'       },
 };
 
+/* Real African professional portraits for gig posters */
 const POSTER_AVATARS = [
-  'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=48&h=48&fit=crop&auto=format&q=70',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop&auto=format&q=70',
-  'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=48&h=48&fit=crop&auto=format&q=70',
-  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=48&h=48&fit=crop&auto=format&q=70',
-  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=48&h=48&fit=crop&auto=format&q=70',
+  PX(1239291, 48, 48),   // African woman professional
+  PX(1181406, 48, 48),   // African man professional
+  PX(733872,  48, 48),   // African woman smiling
+  PX(1181244, 48, 48),   // African male engineer ✓
+  PX(3354648, 48, 48),   // professional driver/worker ✓
 ];
 
 export default function GigMarketplace() {
@@ -138,7 +143,7 @@ export default function GigMarketplace() {
         ) : filtered.length === 0 ? (
           <div className="text-center py-20">
             <img
-              src="https://images.unsplash.com/photo-1612832021455-245704c6755a?w=300&h=200&fit=crop&auto=format&q=70"
+              src={PX(1181406, 300, 200)}
               alt="No results"
               className="w-40 h-28 object-cover rounded-2xl mx-auto mb-4 opacity-40"
             />

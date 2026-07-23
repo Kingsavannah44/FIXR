@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FIXR Image Audit — All Pages</title>
+<style>
+  body  { background:#0D1B2A; color:#fff; font-family:'Segoe UI',Arial,sans-serif; padding:24px; }
+  h1    { color:#F9A825; margin-bottom:4px; font-size:2rem; }
+  .sub  { color:#6b7280; font-size:13px; margin-bottom:24px; }
+  h2    { color:#9ca3af; font-size:11px; text-transform:uppercase; letter-spacing:.2em;
+          margin:32px 0 10px; border-bottom:1px solid #1f2937; padding-bottom:6px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px; }
+  .card { background:#111827; border:1px solid #1f2937; border-radius:12px; overflow:hidden; }
+  .card img { width:100%; height:130px; object-fit:cover; display:block; }
+  .info { padding:8px 10px 12px; }
+  .id   { color:#F9A825; font-size:11px; font-weight:700; }
+  .task { color:#d1d5db; font-size:12px; margin-top:2px; font-weight:600; }
+  .use  { color:#6b7280; font-size:11px; margin-top:3px; line-height:1.4; }
+  .ok   { border-color:#1B5E20; }
+  .warn { border-color:#F9A825; }
+  .bad  { border-color:#ef4444; }
+  .legend { display:flex; gap:16px; margin-bottom:20px; font-size:12px; color:#9ca3af; }
+  .legend span { display:flex; align-items:center; gap:6px; }
+  .dot  { width:10px; height:10px; border-radius:50%; display:inline-block; }
+</style>
+</head>
+<body>
+<h1>FIXR — Image Audit</h1>
+<p class="sub">Open at <strong style="color:#F9A825">http://localhost:5175/image-audit.html</strong> · All IDs verified against local preview thumbnails.</p>
+<div class="legend">
+  <span><span class="dot" style="background:#1B5E20"></span> Verified (local preview exists)</span>
+  <span><span class="dot" style="background:#F9A825"></span> Caution (generic, not Africa-specific)</span>
+</div>
+
+<script>
+const BASE = 'https://images.pexels.com/photos';
+const q = '?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop';
+function img(id) { return `${BASE}/${id}/pexels-photo-${id}.jpeg${q}`; }
+</script>
+
+<h2>Verified IDs (local previews confirmed)</h2>
+<div class="grid">
+  <div class="card ok"><img src="" id="i733872" onerror="this.style.background='#374151'"><div class="info"><div class="id">733872</div><div class="task">African man — outdoor/smiling</div><div class="use">Transport testimonial (Brian), Home floating avatar (Farmer)</div></div></div>
+  <div class="card ok"><img src="" id="i1004409" onerror="this.style.background='#374151'"><div class="info"><div class="id">1004409</div><div class="task">Bus / public transport</div><div class="use">Transport: Local Matatu service card, Shuttle tier</div></div></div>
+  <div class="card ok"><img src="" id="i1118448" onerror="this.style.background='#374151'"><div class="info"><div class="id">1118448</div><div class="task">Highway / open road</div><div class="use">Transport hero bg, Home transport scroll section</div></div></div>
+  <div class="card ok"><img src="" id="i1170194" onerror="this.style.background='#374151'"><div class="info"><div class="id">1170194</div><div class="task">City traffic / street</div><div class="use">Transport: mosaic city traffic, stats</div></div></div>
+  <div class="card ok"><img src="" id="i1181244" onerror="this.style.background='#374151'"><div class="info"><div class="id">1181244</div><div class="task">African man — professional</div><div class="use">Home floating avatar (Developer), About team (Brian), Testimonial (Kevin), Blog author</div></div></div>
+  <div class="card ok"><img src="" id="i1181406" onerror="this.style.background='#374151'"><div class="info"><div class="id">1181406</div><div class="task">African professional / worker</div><div class="use">Home stats, floating avatar (Engineer), CTA bg, About hero, Blog featured, Footer avatars</div></div></div>
+  <div class="card ok"><img src="" id="i1181519" onerror="this.style.background='#374151'"><div class="info"><div class="id">1181519</div><div class="task">Person outdoors / learning</div><div class="use">Agribusiness category (Home, GigMarketplace, Blog), LearningCenter intermediate</div></div></div>
+  <div class="card ok"><img src="" id="i1181671" onerror="this.style.background='#374151'"><div class="info"><div class="id">1181671</div><div class="task">Person with phone / app</div><div class="use">Transport: Live Tracking, Step 1, WHY icon; LearningCenter hero + beginner; Home learning scroll, How It Works step 1</div></div></div>
+  <div class="card ok"><img src="" id="i1239291" onerror="this.style.background='#374151'"><div class="info"><div class="id">1239291</div><div class="task">African woman — professional</div><div class="use">Transport WHY icon, testimonial (Amina), About team (Amara/CEO), Footer avatars, Home floating avatar (Designer), Navbar, Contact</div></div></div>
+  <div class="card ok"><img src="" id="i1545743" onerror="this.style.background='#374151'"><div class="info"><div class="id">1545743</div><div class="task">Car on open road</div><div class="use">Transport: Express Bolt card, Express tier, Navbar SONGA link</div></div></div>
+  <div class="card ok"><img src="" id="i1571460" onerror="this.style.background='#374151'"><div class="info"><div class="id">1571460</div><div class="task">Road at night</div><div class="use">Transport CTA background</div></div></div>
+  <div class="card ok"><img src="" id="i186077" onerror="this.style.background='#374151'"><div class="info"><div class="id">186077</div><div class="task">House exterior</div><div class="use">Home Housing category, Housing page CTA + listing fallback</div></div></div>
+  <div class="card ok"><img src="" id="i209315" onerror="this.style.background='#374151'"><div class="info"><div class="id">209315</div><div class="task">Construction site</div><div class="use">Home Construction category, Navbar Construction link</div></div></div>
+  <div class="card ok"><img src="" id="i2127732" onerror="this.style.background='#374151'"><div class="info"><div class="id">2127732</div><div class="task">Driver at wheel / in car</div><div class="use">Transport: Premium Ride card, Comfort tier, mosaic driver</div></div></div>
+  <div class="card ok"><img src="" id="i2219024" onerror="this.style.background='#374151'"><div class="info"><div class="id">2219024</div><div class="task">Tradesperson at work</div><div class="use">Trades category (Home, GigMarketplace, Navbar), Gig Marketplace scroll, How It Works step 2, Testimonial bg (James)</div></div></div>
+  <div class="card ok"><img src="" id="i3182812" onerror="this.style.background='#374151'"><div class="info"><div class="id">3182812</div><div class="task">Diverse team / people</div><div class="use">Home hero background, Navbar Explore/Pricing/Dashboard links</div></div></div>
+  <div class="card ok"><img src="" id="i3184291" onerror="this.style.background='#374151'"><div class="info"><div class="id">3184291</div><div class="task">Creative / design work</div><div class="use">Home Creative category, Gigs Posted stat, GigMarketplace creative, LearningCenter advanced, About mission image, Testimonial bg (Grace)</div></div></div>
+  <div class="card ok"><img src="" id="i3354648" onerror="this.style.background='#374151'"><div class="info"><div class="id">3354648</div><div class="task">Professional ride / driver</div><div class="use">Transport: Safety First card, Step 2, stats (Verified drivers), WHY icon (Verified drivers), Contact Nairobi office</div></div></div>
+  <div class="card ok"><img src="" id="i3760067" onerror="this.style.background='#374151'"><div class="info"><div class="id">3760067</div><div class="task">Mobile payment / M-Pesa</div><div class="use">Transport: M-Pesa Pay card, stats (Instant payment), Step 3, WHY icon (No hidden fees); Home AI Tools category, AI scroll section, How It Works step 3; Blog AI article; Footer Platform links</div></div></div>
+</div>
+
+<script>
+const ids = [733872,1004409,1118448,1170194,1181244,1181406,1181519,1181671,1239291,1545743,1571460,186077,209315,2127732,2219024,3182812,3184291,3354648,3760067];
+ids.forEach(id => {
+  const el = document.getElementById('i'+id);
+  if (el) el.src = img(id);
+});
+</script>
+
+</body>
+</html>

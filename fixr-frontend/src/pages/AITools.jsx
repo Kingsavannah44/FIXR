@@ -68,7 +68,7 @@ export default function AITools() {
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           <span className="badge bg-accent/20 text-accent border border-accent/30 mb-4 inline-block">🤖 Powered by AI</span>
           <h1 className="text-4xl md:text-5xl font-black mb-3">AI Tools</h1>
-          <p className="text-gray-400 text-lg">Built for African workers — no extra cost, ever.</p>
+          <p className="text-gray-400 text-lg">Built for African workers. No extra cost, ever.</p>
         </div>
       </div>
 
@@ -212,7 +212,7 @@ export default function AITools() {
                 <div className="text-center p-6 bg-accent/10 rounded-xl border border-accent/20">
                   <div className="text-xs text-gray-400 uppercase tracking-widest mb-2">Recommended Rate</div>
                   <div className="text-4xl font-black text-accent">
-                    KES {Number(pricing.recommended_min).toLocaleString()} – {Number(pricing.recommended_max).toLocaleString()}
+                    KES {Number(pricing.recommended_min).toLocaleString()} to {Number(pricing.recommended_max).toLocaleString()}
                   </div>
                   <div className="text-sm text-gray-400 mt-1">{pricing.unit}</div>
                 </div>

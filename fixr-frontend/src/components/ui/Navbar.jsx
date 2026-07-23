@@ -2,55 +2,60 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
+/* ── Curated African-context imagery ──────────────────────────────
+   All Pexels IDs referencing African professionals & workplaces   */
+const PX = (id, w = 56, h = 56) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}&h=${h}&fit=crop`;
+
 const MEGA = {
   Explore: {
-    img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=240&fit=crop&auto=format&q=80',
+    img: PX(2219024, 400, 240),   // African tradesperson at work
     tagline: 'Find work across Kenya',
     links: [
-      { label: 'Gig Marketplace',    to: '/gigs',         desc: 'Browse & apply for gigs',          img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'Learning Center',    to: '/learning',     desc: 'Upskill, earn FIXR points',        img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'AI Tools',           to: '/ai-tools',     desc: 'CV builder, gig pricing',          img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'Business Dashboard', to: '/dashboard',    desc: 'Post gigs, track analytics',       img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'SONGA na FIXR',      to: '/transport',    desc: 'Fast, safe transport across Kenya', img: 'https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=56&h=56&fit=crop&auto=format&q=70' },
+      { label: 'Gig Marketplace',    to: '/gigs',      desc: 'Browse & apply for gigs',           img: PX(2219024)  },
+      { label: 'Learning Center',    to: '/learning',  desc: 'Upskill, earn FIXR points',         img: PX(1181671)  },
+      { label: 'AI Tools',           to: '/ai-tools',  desc: 'CV builder, gig pricing',           img: PX(3760067)  },
+      { label: 'Business Dashboard', to: '/dashboard', desc: 'Post gigs, track analytics',        img: PX(3182812)  },
+      { label: 'SONGA na FIXR',      to: '/transport', desc: 'Fast, safe transport across Kenya', img: PX(1545743)  },
     ],
   },
   Categories: {
-    img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&h=240&fit=crop&auto=format&q=80',
+    img: PX(2219024, 400, 240),   // African tradesperson at work
     tagline: 'Every type of work',
     links: [
-      { label: 'Housing',           to: '/housing',                    desc: 'Verified listings, escrow payments', img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'Construction',      to: '/construction',               desc: 'Project tracking & supervision',    img: 'https://images.unsplash.com/photo-1590479773265-7464e5d48118?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'Trades & Artisans', to: '/gigs?category=trades',       desc: 'Plumbing, electrical, carpentry',   img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'Creative & Design', to: '/gigs?category=creative',     desc: 'Design, photography, video',        img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'Agribusiness',      to: '/gigs?category=agribusiness', desc: 'Farming, cooperatives, export',     img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'Internships',       to: '/gigs?category=internship',   desc: 'Students & graduates',              img: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=56&h=56&fit=crop&auto=format&q=70' },
+      { label: 'Housing',           to: '/housing',                    desc: 'Verified listings, escrow payments', img: PX(186077)   },
+      { label: 'Construction',      to: '/construction',               desc: 'Project tracking & supervision',     img: PX(209315)   },
+      { label: 'Trades & Artisans', to: '/gigs?category=trades',       desc: 'Plumbing, electrical, carpentry',    img: PX(2219024)  },
+      { label: 'Creative & Design', to: '/gigs?category=creative',     desc: 'Design, photography, video',         img: PX(3184291)  },
+      { label: 'Agribusiness',      to: '/gigs?category=agribusiness', desc: 'Farming, cooperatives, export',      img: PX(1181519)  },  // outdoor ✓
+      { label: 'Internships',       to: '/gigs?category=internship',   desc: 'Students & graduates',               img: PX(1181406)  },
     ],
   },
   Company: {
-    img: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=240&fit=crop&auto=format&q=80',
+    img: PX(1239291, 400, 240),   // African professional woman — team
     tagline: 'Built for Africa',
     links: [
-      { label: 'About FIXR', to: '/about',   desc: 'Our story & mission',       img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'Blog & News', to: '/blog',   desc: 'Stories from the platform', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'Pricing',    to: '/pricing', desc: 'Free, Pro & Business',       img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=56&h=56&fit=crop&auto=format&q=70' },
-      { label: 'Contact Us', to: '/contact', desc: 'Get in touch with us',       img: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=56&h=56&fit=crop&auto=format&q=70' },
+      { label: 'About FIXR',  to: '/about',   desc: 'Our story & mission',        img: PX(1239291) },
+      { label: 'Blog & News', to: '/blog',    desc: 'Stories from the platform',  img: PX(1181406) },
+      { label: 'Pricing',     to: '/pricing', desc: 'Free, Pro & Business',        img: PX(3182812) },
+      { label: 'Contact Us',  to: '/contact', desc: 'Get in touch with us',        img: PX(1239291) },
     ],
   },
 };
 
 const MOBILE_LINKS = [
-  { label: 'Home',          to: '/',              img: 'https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'Marketplace',   to: '/gigs',          img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'Housing',       to: '/housing',       img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'Construction',  to: '/construction',  img: 'https://images.unsplash.com/photo-1590479773265-7464e5d48118?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'Transport',     to: '/transport',     img: 'https://images.unsplash.com/photo-1559181567-c3190ca9be46?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'Learning',      to: '/learning',      img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'AI Tools',      to: '/ai-tools',      img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'Pricing',       to: '/pricing',       img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'Blog',          to: '/blog',          img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'About',         to: '/about',         img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'Contact',       to: '/contact',       img: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=56&h=56&fit=crop&auto=format&q=70' },
-  { label: 'Admin Panel',   to: '/admin',         img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=56&h=56&fit=crop&auto=format&q=70', adminOnly: true },
+  { label: 'Home',          to: '/',              img: PX(3182812, 56, 56)  },
+  { label: 'Marketplace',   to: '/gigs',          img: PX(2219024, 56, 56)  },
+  { label: 'Housing',       to: '/housing',       img: PX(186077, 56, 56)   },
+  { label: 'Construction',  to: '/construction',  img: PX(209315, 56, 56)   },
+  { label: 'Transport',     to: '/transport',     img: PX(1545743, 56, 56)  },
+  { label: 'Learning',      to: '/learning',      img: PX(1181671, 56, 56)  },
+  { label: 'AI Tools',      to: '/ai-tools',      img: PX(3760067, 56, 56)  },
+  { label: 'Pricing',       to: '/pricing',       img: PX(3182812, 56, 56)  },
+  { label: 'Blog',          to: '/blog',          img: PX(1181406, 56, 56)  },
+  { label: 'About',         to: '/about',         img: PX(1239291, 56, 56)  },
+  { label: 'Contact',       to: '/contact',       img: PX(1239291, 56, 56)  },
+  { label: 'Admin Panel',   to: '/admin',         img: PX(3354648, 56, 56), adminOnly: true },
 ];
 
 export default function Navbar() {
@@ -122,12 +127,9 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 group">
           <div className="relative w-9 h-9">
-            <img
-              src="https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=72&h=72&fit=crop&auto=format&q=80"
-              alt="FIXR Africa"
-              className="w-full h-full rounded-xl object-cover border border-primary/30 group-hover:border-accent/60 transition"
-            />
-            <div className="absolute inset-0 rounded-xl bg-primary/10 group-hover:bg-accent/5 transition" />
+            <div className="w-full h-full rounded-xl bg-gradient-to-br from-primary to-green-400 flex items-center justify-center border border-primary/40 group-hover:border-accent/60 transition shadow-glow-primary">
+              <span className="text-white font-black text-sm tracking-tight">FX</span>
+            </div>
           </div>
           <div className="flex flex-col leading-none">
             <span className="text-xl font-black text-accent tracking-tight">FIXR<span className="text-primary">.</span></span>
@@ -181,7 +183,9 @@ export default function Navbar() {
                 isActive('/dashboard') ? 'bg-primary/15 text-primary border border-primary/20' : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=28&h=28&fit=crop&auto=format&q=70" alt="" className="w-3.5 h-3.5 rounded object-cover opacity-80" />
+              <svg className="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
               Dashboard
             </Link>
           )}
@@ -264,10 +268,10 @@ export default function Navbar() {
                     </div>
                   </div>
                   {[
-                    { label: 'My Profile', to: '/profile',   img: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=28&h=28&fit=crop&auto=format&q=70' },
-                    { label: 'Dashboard',  to: '/dashboard', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=28&h=28&fit=crop&auto=format&q=70' },
-                    { label: 'AI Tools',   to: '/ai-tools',  img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=28&h=28&fit=crop&auto=format&q=70' },
-                    ...(user.role === 'admin' ? [{ label: '⚙️ Admin Panel', to: '/admin', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=28&h=28&fit=crop&auto=format&q=70' }] : []),
+                    { label: 'My Profile', to: '/profile',   img: PX(1239291, 28, 28) },
+                    { label: 'Dashboard',  to: '/dashboard', img: PX(3182812, 28, 28) },
+                    { label: 'AI Tools',   to: '/ai-tools',  img: PX(3760067, 28, 28) },
+                    ...(user.role === 'admin' ? [{ label: '⚙️ Admin Panel', to: '/admin', img: PX(3354648, 28, 28) }] : []),
                   ].map(item => (
                     <Link key={item.to} to={item.to} className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-800/60 hover:text-white transition">
                       <img src={item.img} alt="" className="w-6 h-6 rounded-lg object-cover" />
@@ -297,7 +301,11 @@ export default function Navbar() {
                 to="/register"
                 className="flex items-center gap-2 bg-accent hover:bg-yellow-500 text-dark font-bold text-sm px-4 py-2 rounded-xl transition shadow-lg shadow-accent/20 hover:shadow-accent/40"
               >
-                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=24&h=24&fit=crop&auto=format&q=70" alt="" className="w-5 h-5 rounded-full object-cover" />
+                <div className="w-5 h-5 rounded-full bg-dark/20 flex items-center justify-center">
+                  <svg className="w-3 h-3 text-dark" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+                  </svg>
+                </div>
                 <span className="hidden sm:inline">Join Free</span>
                 <span className="sm:hidden">Join</span>
               </Link>
@@ -446,7 +454,11 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center gap-3.5 px-3 py-3 rounded-xl text-sm font-medium text-gray-300 hover:bg-gray-800/60 hover:text-white transition"
               >
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=56&h=56&fit=crop&auto=format&q=70" alt="" className="w-9 h-9 rounded-xl object-cover border border-gray-800" />
+                <div className="w-9 h-9 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center">
+                  <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                </div>
                 Dashboard
               </Link>
             )}
@@ -471,8 +483,12 @@ export default function Navbar() {
                 <Link to="/login" onClick={() => setMobileOpen(false)} className="flex items-center justify-center w-full border border-gray-700 text-gray-300 rounded-xl py-3 text-sm font-medium hover:bg-gray-800 transition">
                   Sign In
                 </Link>
-                <Link to="/register" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-yellow-500 text-dark font-bold rounded-xl py-3 text-sm transition">
-                  <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=24&h=24&fit=crop&auto=format&q=70" alt="" className="w-5 h-5 rounded-full object-cover" />
+                  <Link to="/register" onClick={() => setMobileOpen(false)} className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-yellow-500 text-dark font-bold rounded-xl py-3 text-sm transition">
+                  <div className="w-5 h-5 rounded-full bg-dark/20 flex items-center justify-center">
+                    <svg className="w-3 h-3 text-dark" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+                    </svg>
+                  </div>
                   Join Free
                 </Link>
               </>

@@ -64,10 +64,10 @@ const PLANS = [
 ];
 
 const FAQS = [
-  { q: 'Is FIXR really free?', a: 'Yes. The Free plan is free forever — no credit card required. You get the core features including the AI CV builder and gig applications.' },
+  { q: 'Is FIXR really free?', a: 'Yes. The Free plan is free forever with no credit card required. You get the core features including the AI CV builder and gig applications.' },
   { q: 'How does M-Pesa payment work?', a: 'We use the Safaricom Daraja API. When you receive payment for a gig, it goes directly to your M-Pesa number. No bank account needed.' },
   { q: 'Can I cancel my Pro plan anytime?', a: 'Absolutely. Cancel anytime from your dashboard. You keep Pro features until the end of your billing period.' },
-  { q: 'Do you offer government or NGO pricing?', a: 'Yes — we have special pricing for government agencies and NGOs. Contact us at the link below.' },
+  { q: 'Do you offer government or NGO pricing?', a: 'Yes. We have special pricing for government agencies and NGOs. Contact us at the link below.' },
   { q: 'Is my data safe?', a: 'FIXR is fully Kenya DPA 2022 compliant. You own your data and can request erasure at any time.' },
 ];
 

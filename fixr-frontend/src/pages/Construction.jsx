@@ -190,7 +190,7 @@ export default function Construction() {
             </div>
             {parseFloat(form.total_budget) >= 500000 && (
               <div className="sm:col-span-2 bg-primary/10 border border-primary/30 rounded-xl p-3 text-sm text-green-300">
-                ✅ Budget qualifies for a <strong>FIXR Inspector</strong> — an independent verifier will be assigned.
+                ✅ Budget qualifies for a <strong>FIXR Inspector</strong>. An independent verifier will be assigned.
               </div>
             )}
           </div>

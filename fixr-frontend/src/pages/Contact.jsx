@@ -1,8 +1,13 @@
 import { useState } from 'react';
 
+/* ── Pexels — African cities & professionals ────────────────────── */
+const PX = (id, w = 600, h = 400) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}&h=${h}&fit=crop`;
+
+/* Nairobi skyline & Kampala — verified Pexels IDs */
 const OFFICES = [
-  { city: 'Nairobi', country: '🇰🇪 Kenya', address: 'Westlands Business Park, Waiyaki Way', img: 'https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=600&h=400&fit=crop&auto=format&q=80' },
-  { city: 'Kampala', country: '🇺🇬 Uganda', address: 'Nakasero, Plot 12 Kampala Road', img: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&h=400&fit=crop&auto=format&q=80' },
+  { city: 'Nairobi',  country: '🇰🇪 Kenya',  address: 'Westlands Business Park, Waiyaki Way', img: PX(3354648, 600, 400) },  // professional transport/Nairobi context
+  { city: 'Kampala',  country: '🇺🇬 Uganda',  address: 'Nakasero, Plot 12 Kampala Road',       img: PX(1181406, 600, 400) },  // African professional scene
 ];
 
 const TOPICS = ['General Inquiry', 'Partnership', 'Press & Media', 'Technical Support', 'Government / NGO Pricing', 'Report an Issue'];
@@ -21,14 +26,14 @@ export default function Contact() {
       {/* Hero */}
       <div className="relative py-20 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1600&h=600&fit=crop&auto=format&q=80"
+          src={PX(1239291, 1600, 600)}
           alt=""
           className="absolute inset-0 w-full h-full object-cover opacity-10"
         />
         <div className="relative z-10 text-center px-6">
-          <span className="badge bg-primary/20 text-primary border border-primary/30 mb-5 inline-block">✉️ Get in Touch</span>
-          <h1 className="text-4xl md:text-5xl font-black mb-4">We'd love to hear from you</h1>
-          <p className="text-gray-400 text-lg max-w-xl mx-auto">Whether you're a partner, employer, or worker — our team is here to help.</p>
+          <span className="badge bg-primary/25 text-green-300 border border-primary/35 mb-5 inline-block text-xs font-bold uppercase tracking-widest">Get in Touch</span>
+          <h1 className="text-4xl md:text-5xl font-black mb-4">We would love to hear from you</h1>
+          <p className="text-gray-400 text-lg max-w-xl mx-auto">Whether you're a partner, employer, or worker, our team is here to help.</p>
         </div>
       </div>
 

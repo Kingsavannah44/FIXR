@@ -1,45 +1,50 @@
 import { Link } from 'react-router-dom';
 
+/* ── Pexels — African professionals ─────────────────────────────── */
+const PX = (id, w = 400, h = 400) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}&h=${h}&fit=crop`;
+
 const TEAM = [
-  { name: 'Amara Osei', role: 'CEO & Co-Founder', img: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=400&fit=crop&auto=format&q=80', country: '🇰🇪' },
-  { name: 'David Kimani', role: 'CTO', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&auto=format&q=80', country: '🇰🇪' },
-  { name: 'Fatima Al-Hassan', role: 'Head of Product', img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop&auto=format&q=80', country: '🇬🇭' },
-  { name: 'Brian Mwangi', role: 'Head of Growth', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&auto=format&q=80', country: '🇰🇪' },
+  { name: 'Amara Osei',       role: 'CEO & Co-Founder',   img: PX(1239291, 400, 400), country: '🇰🇪' },
+  { name: 'David Kimani',     role: 'CTO',                img: PX(1181406, 400, 400), country: '🇰🇪' },
+  { name: 'Fatima Al-Hassan', role: 'Head of Product',    img: PX(733872,  400, 400), country: '🇬🇭' },
+  { name: 'Brian Mwangi',     role: 'Head of Growth',     img: PX(1181244, 400, 400), country: '🇰🇪' },
 ];
 
 const VALUES = [
-  { icon: '🌍', title: 'Africa First', desc: 'Every feature is designed for African workers, internet speeds, and payment systems.' },
-  { icon: '⚡', title: 'Radical Simplicity', desc: 'No bloat. Every screen should be usable by someone on a first-time smartphone.' },
-  { icon: '🛡️', title: 'Trust & Safety', desc: 'Kenya DPA 2022 compliant. Your data is yours — always.' },
-  { icon: '🤝', title: 'Inclusive Economy', desc: 'From rural farmers to diaspora professionals — everyone deserves opportunity.' },
+  { icon: '🌍', title: 'Africa First',       desc: 'Every feature is designed for African workers, internet speeds, and payment systems.' },
+  { icon: '⚡', title: 'Radical Simplicity', desc: 'No bloat. Every screen should be usable by someone on a first-time smartphone.'       },
+  { icon: '🛡️', title: 'Trust & Safety',     desc: 'Kenya DPA 2022 compliant. Your data is yours — always.'                              },
+  { icon: '🤝', title: 'Inclusive Economy',  desc: 'From rural farmers to diaspora professionals — everyone deserves opportunity.'        },
 ];
 
 const MILESTONES = [
-  { year: '2023', event: 'FIXR founded in Nairobi, Kenya' },
-  { year: 'Q1 2024', event: 'MVP launched — Auth, Gigs, Learning' },
-  { year: 'Q2 2024', event: 'M-Pesa integration & AI tools added' },
-  { year: 'Q3 2024', event: '50,000 registered users milestone' },
-  { year: '2025 →', event: 'Expanding to UG, TZ, GH, NG, RW' },
+  { year: '2023',    event: 'FIXR founded in Nairobi, Kenya'          },
+  { year: 'Q1 2024', event: 'MVP launched — Auth, Gigs, Learning'      },
+  { year: 'Q2 2024', event: 'M-Pesa integration & AI tools added'      },
+  { year: 'Q3 2024', event: '50,000 registered users milestone'        },
+  { year: '2025',    event: 'Expanding to UG, TZ, GH, NG, RW'         },
 ];
 
 export default function About() {
   return (
     <div className="min-h-screen bg-dark">
+
       {/* Hero */}
-      <div className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+      <div className="relative h-[60vh] min-h-[420px] flex items-center justify-center overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1600&h=900&fit=crop&auto=format&q=80"
-          alt=""
+          src={PX(1181406, 1600, 900)}
+          alt="African professionals collaborating"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/50 to-dark" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark/70 via-dark/55 to-dark" />
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <span className="badge bg-primary/30 text-primary border border-primary/40 mb-5 inline-block">🌍 Our Story</span>
+          <span className="badge bg-primary/25 text-green-300 border border-primary/35 mb-5 inline-block text-xs font-bold uppercase tracking-widest">Our Story</span>
           <h1 className="text-5xl md:text-6xl font-black mb-5 leading-tight">
             Built for Africa,<br />by Africans.
           </h1>
           <p className="text-gray-300 text-lg max-w-xl mx-auto leading-relaxed">
-            We started FIXR because we saw talented people across Kenya struggling to find work — not because there wasn't work, but because the tools weren't built for them.
+            We started FIXR because talented people across Kenya were struggling to find work — not because there wasn't work, but because the tools weren't built for them.
           </p>
         </div>
       </div>
@@ -56,24 +61,24 @@ export default function About() {
               FIXR connects the informal and formal economies through technology that actually works — built for low-bandwidth, built for M-Pesa, built for real African workers.
             </p>
           </div>
-          <div className="relative rounded-2xl overflow-hidden aspect-video">
+          <div className="relative rounded-2xl overflow-hidden aspect-video shadow-card-hover">
             <img
-              src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=500&fit=crop&auto=format&q=80"
+              src={PX(3184291, 800, 500)}
               alt="Team collaborating"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-primary/20" />
+            <div className="absolute inset-0 bg-primary/15" />
           </div>
         </div>
       </div>
 
       {/* Values */}
-      <div className="bg-gray-900 border-y border-gray-800 py-20 px-6">
+      <div className="bg-surface border-y border-border py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-black text-center mb-12">What we stand for</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {VALUES.map(v => (
-              <div key={v.title} className="card text-center">
+              <div key={v.title} className="card text-center hover:border-accent/40 hover:shadow-glow-accent">
                 <div className="text-4xl mb-4">{v.icon}</div>
                 <h3 className="font-bold text-lg mb-2">{v.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{v.desc}</p>
@@ -87,7 +92,7 @@ export default function About() {
       <div className="max-w-3xl mx-auto px-6 py-20">
         <h2 className="text-3xl font-black text-center mb-12">Our Journey</h2>
         <div className="relative">
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gray-800" />
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-border" />
           <div className="space-y-8">
             {MILESTONES.map((m, i) => (
               <div key={i} className="flex gap-6 items-start">
@@ -107,20 +112,24 @@ export default function About() {
       </div>
 
       {/* Team */}
-      <div className="bg-gray-900 border-y border-gray-800 py-20 px-6">
+      <div className="bg-surface border-y border-border py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-black text-center mb-3">Meet the Team</h2>
           <p className="text-gray-400 text-center mb-12">The people building Africa's work platform.</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {TEAM.map(t => (
               <div key={t.name} className="text-center group">
-                <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-4 border border-gray-800 group-hover:border-primary transition">
-                  <img src={t.img} alt={t.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-4 border border-border group-hover:border-accent/50 transition-all duration-300 shadow-card">
+                  <img
+                    src={t.img}
+                    alt={t.name}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   <span className="absolute top-3 right-3 text-xl">{t.country}</span>
                 </div>
-                <div className="font-bold">{t.name}</div>
-                <div className="text-gray-400 text-sm">{t.role}</div>
+                <div className="font-bold text-sm">{t.name}</div>
+                <div className="text-gray-400 text-xs mt-0.5">{t.role}</div>
               </div>
             ))}
           </div>
@@ -133,7 +142,7 @@ export default function About() {
         <p className="text-gray-400 mb-8">Start free. No credit card. No friction.</p>
         <div className="flex gap-4 justify-center flex-wrap">
           <Link to="/register" className="btn-accent px-8 py-3">Get Started Free</Link>
-          <Link to="/contact" className="border border-gray-700 text-gray-300 hover:bg-gray-800 px-8 py-3 rounded-lg text-sm font-semibold transition">Contact Us</Link>
+          <Link to="/contact" className="btn-ghost px-8 py-3">Contact Us</Link>
         </div>
       </div>
     </div>

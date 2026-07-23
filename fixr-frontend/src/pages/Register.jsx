@@ -51,7 +51,7 @@ export default function Register() {
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
           <Link to="/" className="text-3xl font-black text-accent">FIXR<span className="text-white">.</span></Link>
           <div className="space-y-4">
-            {['Free forever — no credit card', 'M-Pesa payments built in', 'AI CV builder included', 'Kenya DPA 2022 compliant'].map(f => (
+            {['Free forever, no credit card', 'M-Pesa payments built in', 'AI CV builder included', 'Kenya DPA 2022 compliant'].map(f => (
               <div key={f} className="flex items-center gap-3 text-white text-sm">
                 <div className="w-5 h-5 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center flex-shrink-0">
                   <svg className="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 20 20">

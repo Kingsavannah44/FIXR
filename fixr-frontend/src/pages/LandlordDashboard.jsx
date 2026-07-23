@@ -215,7 +215,7 @@ export default function LandlordDashboard() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="sm:col-span-2">
               <label className="block text-sm font-semibold mb-1">Listing Title</label>
-              <input className="input" placeholder="e.g. 2-Bedroom Apartment – Kilimani" required
+              <input className="input" placeholder="e.g. 2-Bedroom Apartment, Kilimani" required
                 value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} />
             </div>
             <div className="sm:col-span-2">
@@ -341,7 +341,7 @@ export default function LandlordDashboard() {
             <div className="card border-yellow-800/40 bg-yellow-900/10 text-center">
               <div className="text-4xl mb-3">⏳</div>
               <h3 className="font-bold text-yellow-400 mb-1">Verification Pending</h3>
-              <p className="text-gray-400 text-sm">Your verification is under admin review. This usually takes 1–2 business days.</p>
+              <p className="text-gray-400 text-sm">Your verification is under admin review. This usually takes 1 to 2 business days.</p>
               {verification?.admin_note && <p className="text-xs text-yellow-500 mt-2">Note: {verification.admin_note}</p>}
             </div>
           ) : (

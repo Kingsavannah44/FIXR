@@ -2,16 +2,22 @@ import { useState, useEffect } from 'react';
 import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
+/* ── Pexels — African learning & education context ──────────────── */
+const PX = (id, w = 400, h = 220) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}&h=${h}&fit=crop`;
+
 const LEVEL_COLORS = {
   beginner:     'bg-green-500/20 text-green-300 border border-green-500/30',
   intermediate: 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30',
   advanced:     'bg-red-500/20 text-red-300 border border-red-500/30',
 };
 const LEVEL_ICONS = { beginner: '🌱', intermediate: '📈', advanced: '🔥' };
+
+/* African students and professionals studying — all IDs verified from local previews */
 const LEVEL_IMGS = {
-  beginner:     'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=220&fit=crop&auto=format&q=70',
-  intermediate: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=220&fit=crop&auto=format&q=70',
-  advanced:     'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=220&fit=crop&auto=format&q=70',
+  beginner:     PX(1181671),   // person on phone/learning ✓
+  intermediate: PX(1181519),   // person studying/outdoor ✓
+  advanced:     PX(3184291),   // creative professional at work ✓
 };
 
 export default function LearningCenter() {
@@ -44,7 +50,7 @@ export default function LearningCenter() {
       {/* Hero */}
       <div className="relative overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&h=400&fit=crop&auto=format&q=80"
+          src={PX(1181671, 1600, 400)}
           alt=""
           className="absolute inset-0 w-full h-full object-cover opacity-20"
         />

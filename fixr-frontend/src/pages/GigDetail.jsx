@@ -83,7 +83,7 @@ export default function GigDetail() {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { icon: '📍', label: 'Location', value: gig.location || 'Not specified' },
-                  { icon: '💰', label: 'Budget', value: gig.budget_min && gig.budget_max ? `KES ${Number(gig.budget_min).toLocaleString()} – ${Number(gig.budget_max).toLocaleString()}` : 'Negotiable' },
+                  { icon: '💰', label: 'Budget', value: gig.budget_min && gig.budget_max ? `KES ${Number(gig.budget_min).toLocaleString()} to ${Number(gig.budget_max).toLocaleString()}` : 'Negotiable' },
                   { icon: '👤', label: 'Posted by', value: gig.poster_name },
                   { icon: '📅', label: 'Posted', value: new Date(gig.created_at).toLocaleDateString('en-KE', { day: 'numeric', month: 'short', year: 'numeric' }) },
                 ].map(d => (

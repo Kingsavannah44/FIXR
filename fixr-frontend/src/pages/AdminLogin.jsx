@@ -22,7 +22,7 @@ export default function AdminLogin() {
     try {
       const { data } = await api.post('/auth/login', form);
       if (data.user?.role !== 'admin') {
-        setError('Access denied — admin accounts only.');
+        setError('Access denied. Admin accounts only.');
         return;
       }
       login(data);
